@@ -1,0 +1,25 @@
+function solution(sequence) {
+  let count = 0;
+
+  for (let i = 1; i < sequence.length; i++) {
+    if (sequence[i] <= sequence[i - 1]) {
+      count = count + 1;
+      if (count > 1) {
+        return false;
+      }
+      if (
+        sequence[i] <= sequence[i - 2] &&
+        sequence[i + 1] <= sequence[i - 1]
+      ) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+// For sequence = [1, 3, 2, 1], the output should be
+// solution(sequence) = false.
+console.log(solution([1, 3, 2, 1]));
+// For sequence = [1, 3, 2], the output should be
+// solution(sequence) = true.
+console.log(solution([1, 3, 2]));
